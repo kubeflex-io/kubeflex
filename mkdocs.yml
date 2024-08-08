@@ -1,0 +1,30 @@
+site_name: KubeFlex
+site_url: https://docs.kubeflex.io
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+
+nav:
+  - Home: index.md
+  - Technical Guides:
+    - Authentication and Authorisation with Keycloak and Istio: technical-guides/auth.md
+    - Cert Manager: technical-guides/cert-manager.md
+    - CircleCi Setup: technical-guides/circleci.md
+    - FluxCD Installation: technical-guides/fluxcd.md
+    - Helm Repositories: technical-guides/helmrepositories.md
+    - Configuring Istio IngressGatway with Let's Encrypt Certificate: technical-guides/ingressgateway.md
+    - Istio Installation: technical-guides/istio.md
+    - Keycloak Deployment: technical-guides/keycloak.md
+    - Local Development Setup: technical-guides/local.md
+    - MinIO Deployment: technical-guides/minio.md
+    - Observability: technical-guides/monitoring.md
+    - Conventional Commits, Semantic Versioning and CircleCI: technical-guides/release.md
+    - Sealed Secrets: technical-guides/sealed-secrets.md
