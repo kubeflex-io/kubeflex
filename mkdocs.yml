@@ -13,8 +13,7 @@ theme:
     - navigation.expand
   logo: images/logo.png
 
-extra:
-  homepage: https://kubeflex.io
+
 nav:
   - Home: index.md
   - Technical Guides:
@@ -38,3 +37,6 @@ extra:
       link: https://github.com/kubeflex-io/kubeflex
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/company/kubeflex
+  homepage: https://kubeflex.io
+
+repo_url: 'https://github.com/kubeflex-io/kubeflex'
