@@ -13,6 +13,8 @@ theme:
     - navigation.expand
   logo: images/logo.png
 
+extra:
+  homepage: https://kubeflex.io
 nav:
   - Home: index.md
   - Technical Guides:
@@ -29,3 +31,10 @@ nav:
     - Observability: technical-guides/monitoring.md
     - Conventional Commits, Semantic Versioning and CircleCI: technical-guides/release.md
     - Sealed Secrets: technical-guides/sealed-secrets.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kubeflex-io/kubeflex
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/kubeflex
