@@ -24,12 +24,14 @@ nav:
     - Helm Repositories: technical-guides/helmrepositories.md
     - Configuring Istio IngressGatway with Let's Encrypt Certificate: technical-guides/ingressgateway.md
     - Istio Installation: technical-guides/istio.md
-    - Keycloak Deployment: technical-guides/keycloak.md
+    - Keycloak, Istio and Let’s Encrypt Certificate: technical-guides/keycloak.md
     - Local Development Setup: technical-guides/local.md
     - MinIO Deployment: technical-guides/minio.md
     - Observability: technical-guides/monitoring.md
     - Conventional Commits, Semantic Versioning and CircleCI: technical-guides/release.md
     - Sealed Secrets: technical-guides/sealed-secrets.md
+  - Pricing: pricing.md
+  - About: about.md
 
 extra:
   social:
@@ -40,3 +42,11 @@ extra:
   homepage: https://kubeflex.io
 
 repo_url: 'https://github.com/kubeflex-io/kubeflex'
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
