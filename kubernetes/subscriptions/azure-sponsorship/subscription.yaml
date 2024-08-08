@@ -1,0 +1,4 @@
+state_subscription : <your-subscription-id>
+state_resource_group : terraform-state
+state_storage_account : exoffenderstfstate
+subscription_id: <your-subscription-id>
