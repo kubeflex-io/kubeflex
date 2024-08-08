@@ -11,6 +11,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+  logo: images/logo.png
 
 nav:
   - Home: index.md
@@ -28,8 +29,3 @@ nav:
     - Observability: technical-guides/monitoring.md
     - Conventional Commits, Semantic Versioning and CircleCI: technical-guides/release.md
     - Sealed Secrets: technical-guides/sealed-secrets.md
-
-plugins:
-- social:
-    cards_layout_options:
-      logo: docs/images/logo.png
