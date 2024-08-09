@@ -6,19 +6,18 @@ In this guide, we will explore how to leverage Istio to implement authentication
 
 ## Contents
 
-1. Introduction to Keycloak
-2. Introduction to Istio
-3. Introduction to FastAPI
-4. Deploying the job-service Microservice without Authentication and Authorization
-   - Istio Weight-Based Traffic Routing between job-service-v1 and job-service-v2
-5. Implementing Authentication with Istio
-   - Passing the JWT Token to Backend Services
-6. Improving the Code with Additional Constraints
-   - Decoding the Token to get the Logged-in User
-   - Validate the Ownership of an Item
-7. Implementing Authorization with Istio (Based on Keycloak Roles)
-8. Implementing Authorization between Microservices
-
+- [x] Introduction to Keycloak
+- [x] Introduction to Istio
+- [x] Introduction to FastAPI
+- [x] Deploying the job-service Microservice without Authentication and Authorization
+    * [x] Istio Weight-Based Traffic Routing between job-service-v1 and job-service-v2
+- [x] Implementing Authentication with Istio
+    * [x] Passing the JWT Token to Backend Services
+- [x] Improving the Code with Additional Constraints
+    * [x] Decoding the Token to get the Logged-in User
+    * [x] Validate the Ownership of an Item
+- [x] Implementing Authorization with Istio (Based on Keycloak Roles)
+- [x] Implementing Authorization between Microservices
 
 
 ## Introduction to Keycloak
@@ -90,7 +89,9 @@ spec:
       imagePullSecrets:
         - name: acr-secret
 ```
-Notice FluxCD `imagepolicy` reference in the manifest file. With this, we can automate the deployment whenever a new image is available in the image repository. 
+???+ info
+
+    Notice FluxCD `imagepolicy` reference in the manifest file. With this, we can automate the deployment whenever a new image is available in the image repository. 
 
 ## Introduction to Istio
 
@@ -100,7 +101,11 @@ Istio is an open-source service mesh platform designed to manage how microservic
 
 FastAPI is a modern Python framework that is rapidly gaining popularity. It is designed for rapid development and to maximize the developer experience. In this example, we will use two versions of a job API ([V1](https://github.com/kubeflex-io/job-service-v1),  [V2](https://github.com/kubeflex-io/job-service-v2),) written in FastAPI. The API utilizes the SQLModel library to interact with the backend database, combining features from both SQLAlchemy and Pydantic. 
 
-SQLModel is developed by the same author as FastAPI.
+???+ info
+
+    SQLModel is developed by the same author as FastAPI. 
+
+
 
 ## Deploying job-service without Authentication and Authorization
 
@@ -348,7 +353,10 @@ curl --location 'https://kubeflex.io/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d
 
 As you can see, there is no authentication or authorization on these endpoints. Anyone can create, update, delete, or retrieve jobs and job categories.
 
-Note: I used Swagger, which is integrated with FastAPI, to generate the sample curl requests.
+!!! info
+
+    Note: I used Swagger, which is integrated with FastAPI, to generate the sample curl requests.
+
 
 Also, please note that when creating new jobs, we manually pass the `owner_id` with the request. Ideally, this should be the user ID of the logged-in user. We will delve further into this when discussing job-service v2.
 
@@ -710,9 +718,15 @@ spec:
     mode: STRICT
 ```
 
-Please note that if the job-notification-service requires the requester's details, we must pass the token from the job-service to the job-notification-service programmatically. Istio, by default, will only propagate the JWT token for one hop.
+???+ note
 
-Alternatively, you can decode the token in the job-service and pass the decoded user details when calling the job-notification-service APIs.
+    Please note that if the job-notification-service requires the requester's details, we must pass the token from the job-service to the job-notification-service programmatically. Istio, by default, will only propagate the JWT token for one hop.
+
+???+ tip
+
+    Alternatively, you can decode the token in the job-service and pass the decoded user details when calling the job-notification-service APIs.
+
+
 
 ## Conclusion
 
