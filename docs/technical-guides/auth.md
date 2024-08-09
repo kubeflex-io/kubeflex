@@ -695,6 +695,25 @@ spec:
         namespaces: ["job-service"]
         principals: ["cluster.local/ns/job-service/sa/job-service"]
 ```
+PeerAuthentication to enforce mTLS between two services
+```
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: job-notification-service-mtls
+  namespace: job-notification-service
+spec:
+  selector:
+    matchLabels:
+      app: job-notification-service
+  mtls:
+    mode: STRICT
+```
+
+Please note that if the job-notification-service requires the requester's details, we must pass the token from the job-service to the job-notification-service programmatically. Istio, by default, will only propagate the JWT token for one hop.
+
+Alternatively, you can decode the token in the job-service and pass the decoded user details when calling the job-notification-service APIs.
+
 ## Conclusion
 
 In conclusion, we have implemented authentication and authorization for our microservices using Istio and Keycloak, ensuring secure access to resources. We've configured policies to control access based on roles and user identities, enhancing the overall security posture of our applications.
