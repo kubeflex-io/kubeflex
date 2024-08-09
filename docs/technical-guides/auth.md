@@ -66,7 +66,7 @@ spec:
                   name: keycloak
                   key: admin-password
             - name: KC_HOSTNAME
-              value: auth.kubeflex.co.uk
+              value: auth.kubeflex.io
             - name: KC_PROXY
               value: "edge"
             - name: KC_DB
@@ -240,8 +240,8 @@ metadata:
   namespace: job-service
 spec:
   hosts:
-    - "www.kubeflex.co.uk"
-    - "kubeflex.co.uk"
+    - "www.kubeflex.io"
+    - "kubeflex.io"
     - job-service.job-service.svc.cluster.local
   gateways:
     - istio-system/gateway
@@ -282,7 +282,7 @@ spec:
 Note that under the gateways section, we specify both our ingress gateway and "mesh." This is because we expect traffic from both the external gateway and other microservices within the cluster. Observe how we have directed 100% of the traffic to the v1 deployment.
 
 
-Below is Istio gateway resource. It handles traffic destined for the kubeflex.co.uk domain. Additionally, we've attached a Let's Encrypt TLS certificate to the gateway using cert-manager.
+Below is Istio gateway resource. It handles traffic destined for the kubeflex.io domain. Additionally, we've attached a Let's Encrypt TLS certificate to the gateway using cert-manager.
 ```
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -301,9 +301,9 @@ spec:
         mode: SIMPLE
         credentialName: kubeflex-tls
       hosts:
-      - "www.kubeflex.co.uk"
-      - "kubeflex.co.uk"
-      - "auth.kubeflex.co.uk"
+      - "www.kubeflex.io"
+      - "kubeflex.io"
+      - "auth.kubeflex.io"
 ```
 We can use Kiali dashboard to validate our routing configuration. Note that, `job-service` connects to the same `keycloakdb` MySQL instance. But in reality, `job-service` has access only to it's specific `job-service` database inside the instance. 
 
@@ -313,7 +313,7 @@ Now we are ready to do some testing.
 
 #### Creating a new job category
 ```
- curl --location 'https://kubeflex.co.uk/api/jobcategories/' \
+ curl --location 'https://kubeflex.io/api/jobcategories/' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "Information Technology"
@@ -323,7 +323,7 @@ Now we are ready to do some testing.
 
 #### Creating a new job
 ```
-curl --location 'https://kubeflex.co.uk/api/jobs/' \ 'https://kubeflex.co.uk/api/jobs/' \
+curl --location 'https://kubeflex.io/api/jobs/' \ 'https://kubeflex.io/api/jobs/' \
 --header 'Content-Type: application/json' \
 --data '{
   "title": "Software Engineer",
@@ -336,13 +336,13 @@ curl --location 'https://kubeflex.co.uk/api/jobs/' \ 'https://kubeflex.co.uk/api
 #### Get job category by ID
 
 ```
-curl --location 'https://kubeflex.co.uk/api/jobcategories/17'
+curl --location 'https://kubeflex.io/api/jobcategories/17'
 {"name":"Information Technology","id":17}
 ```
 
 #### Get job by ID
 ```
-curl --location 'https://kubeflex.co.uk/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d87'
+curl --location 'https://kubeflex.io/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d87'
 {"title":"Software Engineer","description":"Software Engineer with 2 years of experience","owner_id":"5690cc29-5008-4a81-8f08-db92e01d6d44","category_id":17,"id":"bff285f6-34f6-4c5f-9619-2e860bec2d87"}
 ```
 
@@ -369,16 +369,16 @@ spec:
      matchLabels:
       app: job-service
   jwtRules:
-   - issuer: "https://auth.kubeflex.co.uk/realms/kubeflex"
-     jwksUri: "https://auth.kubeflex.co.uk/realms/kubeflex/protocol/openid-connect/certs"
+   - issuer: "https://auth.kubeflex.io/realms/kubeflex"
+     jwksUri: "https://auth.kubeflex.io/realms/kubeflex/protocol/openid-connect/certs"
      forwardOriginalToken: true
 ```
 
 Additionally, we have set "forwardOriginalToken": true, as we need to pass the token in the format "Authorization: Bearer <token>" to the backend service. You can also pass the token to the backend service under a custom header name. For instance, you can use the following code snippet to pass the token as a value of the key "jwt_parsed":
 ```
    jwtRules:
-    - issuer: "https://auth.kubeflex.co.uk/realms/kubeflex"
-      jwksUri: "https://auth.kubeflex.co.uk/realms/kubeflex/protocol/openid-connect/certs"
+    - issuer: "https://auth.kubeflex.io/realms/kubeflex"
+      jwksUri: "https://auth.kubeflex.io/realms/kubeflex/protocol/openid-connect/certs"
       outputPayloadToHeader: jwt-parsed
 ```
 
@@ -416,7 +416,7 @@ Let's test some endpoints:
 
 #### Creating a new job
 ```
-curl --location 'https://kubeflex.co.uk/api/jobs/' \
+curl --location 'https://kubeflex.io/api/jobs/' \
 --header 'Content-Type: application/json' \
 --data '{
   "title": "Software Engineer II",
@@ -429,12 +429,12 @@ RBAC: access denied
 
 #### Get job by ID
 ```
-curl --location 'https://kubeflex.co.uk/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d87'
+curl --location 'https://kubeflex.io/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d87'
 {"title":"Software Engineer","description":"Software Engineer with 2 years of experience","owner_id":"5690cc29-5008-4a81-8f08-db92e01d6d44","category_id":17,"id":"bff285f6-34f6-4c5f-9619-2e860bec2d87"}
 ```
 #### Creating a new job category
 ```
- curl --location 'https://kubeflex.co.uk/api/jobcategories/' \
+ curl --location 'https://kubeflex.io/api/jobcategories/' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "Computer Science"
@@ -445,7 +445,7 @@ RBAC: access denied
 #### Get job category by ID
 
 ```
-curl --location 'https://kubeflex.co.uk/api/jobcategories/17'
+curl --location 'https://kubeflex.io/api/jobcategories/17'
 {"name":"Information Technology","id":17}
 ```
 
@@ -455,7 +455,7 @@ Next, let's generate a token by calling the Keycloak token URL and use it to per
 
 #### Generating a token
 ```
-curl --location 'https://auth.kubeflex.co.uk/realms/kubeflex/protocol/openid-connect/token' \
+curl --location 'https://auth.kubeflex.io/realms/kubeflex/protocol/openid-connect/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'client_id=kubeflex-platform' \
@@ -466,7 +466,7 @@ This returns an access token, which we can use for subsequent requests.
 
 #### Creating a new job
 ```
-curl --location 'https://kubeflex.co.uk/api/jobs/' \
+curl --location 'https://kubeflex.io/api/jobs/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data '{
@@ -551,8 +551,8 @@ metadata:
   namespace: job-service
 spec:
   hosts:
-    - "www.kubeflex.co.uk"
-    - "kubeflex.co.uk"
+    - "www.kubeflex.io"
+    - "kubeflex.io"
     - job-service.job-service.svc.cluster.local
   gateways:
     - istio-system/gateway
@@ -576,7 +576,7 @@ spec:
 Now, Let's try to create a job without `owner_id`. Please note that, now `JobCreate` data model no longer has `owner_id` attribute. 
 
 ```
- curl --location 'https://kubeflex.co.uk/api/jobs/' \
+ curl --location 'https://kubeflex.io/api/jobs/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data '{
@@ -593,7 +593,7 @@ Let's try to modify a job
 Let's attempt to modify a job owned by someone else.
 
 ```
-curl --location --request PATCH 'https://kubeflex.co.uk/api/jobs/2f736c4d-11ba-421f-953a-d1d6f0e5b653' \
+curl --location --request PATCH 'https://kubeflex.io/api/jobs/2f736c4d-11ba-421f-953a-d1d6f0e5b653' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data '{
@@ -651,7 +651,7 @@ We can create the admin role by navigating to "Realm Roles" under the Keycloak r
 
 #### Creating a Job Category - Regular User
 ```
-curl --location 'https://kubeflex.co.uk/api/jobcategories/' \location 'https://kubeflex.co.uk/api/jobcategories/' \
+curl --location 'https://kubeflex.io/api/jobcategories/' \location 'https://kubeflex.io/api/jobcategories/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data '{
@@ -662,7 +662,7 @@ RBAC: access denied
 
 #### Creating a Job Category - Admin User
 ```
-curl --location 'https://kubeflex.co.uk/api/jobcategories/' \i/jobcategories/' \
+curl --location 'https://kubeflex.io/api/jobcategories/' \i/jobcategories/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <token>' \
 --data '{

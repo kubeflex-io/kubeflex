@@ -15,7 +15,7 @@ NAME                   TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)      
 istio-ingressgateway   LoadBalancer   10.0.41.165   4.250.87.120   15021:32693/TCP,80:32134/TCP,443:32131/TCP   8d
 ```
 
-Point the domain to the external IP address. In our case, we have pointed both kubeflex.co.uk and www.kubeflex.co.uk to 4.250.87.120. 
+Point the domain to the external IP address. In our case, we have pointed both kubeflex.io and www.kubeflex.io to 4.250.87.120. 
 
 ## Create a test deployment
 In our case, we have exposed our frontend service through the ingressgateway. But for simplicity, let's expose an nginx deployment through the ingressgateway. 
@@ -156,8 +156,8 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-    - "www.kubeflex.co.uk"
-    - "kubeflex.co.uk"
+    - "www.kubeflex.io"
+    - "kubeflex.io"
   gateways:
     - gateway
   http:
@@ -169,7 +169,7 @@ spec:
 ```
 This routes the traffic receives by the gateway to the frontend service if the host maches with the above specification. 
 
-Merge the above changes, so that FluxCD can do the deployment. Once the deployment is done, we are able to access the deployment via http://kubeflex.co.uk endpoint. 
+Merge the above changes, so that FluxCD can do the deployment. Once the deployment is done, we are able to access the deployment via http://kubeflex.io endpoint. 
 
 ## Let's Encrypt TLS Certificate
 
@@ -202,8 +202,8 @@ spec:
     - server auth
     - client auth
   dnsNames:
-    - "kubeflex.co.uk"
-    - "www.kubeflex.co.uk"
+    - "kubeflex.io"
+    - "www.kubeflex.io"
   issuerRef:
     name: letsencrypt-prod-cluster
     kind: ClusterIssuer
@@ -245,9 +245,9 @@ spec:
         mode: SIMPLE
         credentialName: kubeflex-tls
       hosts:
-      - "www.kubeflex.co.uk"
-      - "kubeflex.co.uk"
+      - "www.kubeflex.io"
+      - "kubeflex.io"
 ```
 
 
-Once the above changes are merged, we are able to access the deployment via https://kubeflex.co.uk or https://www.kubeflex.co.uk
+Once the above changes are merged, we are able to access the deployment via https://kubeflex.io or https://www.kubeflex.io

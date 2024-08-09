@@ -149,7 +149,7 @@ spec:
       automountServiceAccountToken: true
       containers:
         - name: bookinfo
-          image: acr.kubeflex.co.uk/bookinfo:v1.0.0 
+          image: acr.kubeflex.io/bookinfo:v1.0.0 
           env:
             - name: DB_HOST
               value: "bookinfo-db.bookinfo.svc.cluster.local"
@@ -205,7 +205,7 @@ metadata:
 spec:
   secretRef:
     name: acr-secret
-  image: acr.kubeflex.co.uk/bookinfo
+  image: acr.kubeflex.io/bookinfo
   interval: 5m
 ```
 

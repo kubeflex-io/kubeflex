@@ -31,7 +31,7 @@ As a startup, managing cloud costs constitutes a significant aspect of our finan
 ## Contact
 
 * Find me on [LinkedIn](https://www.linkedin.com/in/sajeeval)
-* Visit [kubeflex](https://kubeflex.co.uk) Platform. (Work in progress)
+* Visit [kubeflex](https://kubeflex.io) Platform. (Work in progress)
 
 ## Support
 We are presently self-funded and actively seeking investment opportunities. If our vision resonates with you, we'd appreciate the opportunity to discuss how you can contribute to our journey.

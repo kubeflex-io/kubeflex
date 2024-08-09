@@ -121,7 +121,7 @@ metadata:
   namespace: istio-system
 spec:
   acme:
-    email: ranatunga@kubeflex.co.uk
+    email: ranatunga@kubeflex.io
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod-cluster
@@ -141,7 +141,7 @@ metadata:
   namespace: istio-system
 spec:
   acme:
-    email: ranatunga@kubeflex.co.uk
+    email: ranatunga@kubeflex.io
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-staging-cluster

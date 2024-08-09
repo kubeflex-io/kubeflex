@@ -234,7 +234,7 @@ spec:
                   name: keycloak
                   key: admin-password
             - name: KC_HOSTNAME
-              value: keycloak.kubeflex.co.uk
+              value: keycloak.kubeflex.io
             - name: KC_PROXY
               value: "edge"
             - name: KC_DB
@@ -294,7 +294,7 @@ istio-ingressgateway   LoadBalancer   10.0.41.165   4.250.87.120   15021:32693/T
 
 Create a DNS entry
 
-keycloak.kubeflex.co.uk -> 4.250.87.120
+keycloak.kubeflex.io -> 4.250.87.120
 
 ## Gateway changes
 
@@ -328,7 +328,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-    - "keycloak.kubeflex.co.uk"
+    - "keycloak.kubeflex.io"
   gateways:
     - gateway
   http:
@@ -364,7 +364,7 @@ spec:
     - server auth
     - client auth
   dnsNames:
-    - "keycloak.kubeflex.co.uk"
+    - "keycloak.kubeflex.io"
   issuerRef:
     name: letsencrypt-prod-cluster
     kind: ClusterIssuer
@@ -399,7 +399,7 @@ spec:
         mode: SIMPLE
         credentialName: keycloak-kubeflex-tls
       hosts:
-      - "keycloak.kubeflex.co.uk"
+      - "keycloak.kubeflex.io"
 ```
 
-With the above change, we can access our keycloak via https://keycloak.kubeflex.co.uk. 
+With the above change, we can access our keycloak via https://keycloak.kubeflex.io. 

@@ -50,8 +50,8 @@ spec:
      matchLabels:
       app: skills-service
   jwtRules:
-   - issuer: "https://keycloak.kubeflex.co.uk/realms/istio"
-     jwksUri: "https://keycloak.kubeflex.co.uk/realms/istio/protocol/openid-connect/certs"
+   - issuer: "https://keycloak.kubeflex.io/realms/istio"
+     jwksUri: "https://keycloak.kubeflex.io/realms/istio/protocol/openid-connect/certs"
      outputPayloadToHeader: jwt-parsed
 ```
 
