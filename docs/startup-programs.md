@@ -1,3 +1,7 @@
+<div>
+  <h2>Startup Programs Directory</h2>
+  <p>Explore exclusive offers to support your startup's growth. If you'd like to contribute, please update  <a href="https://github.com/kubeflex-io/kubeflex/blob/main/docs/grantors.json" target="_blank">this file</a> and submit a pull request.</p>
+</div>
 <select id="filter">
   <option value="All">All</option>
   <option value="Analytics">Analytics</option>

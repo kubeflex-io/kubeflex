@@ -1,7 +1,5 @@
 # Cloud-Agnostic Infrastructure on Kubernetes for Startups
 
-## Core Components
-![Alt text](images/platform-v3.png?raw=true "kubeflex Platform")
 
 1. [Deploying Kubernetes Cluster on Azure](kubernetes) 
 2. [Configuring FluxCD - Our GitOps tool](docs/technical-guides/fluxcd.md)
