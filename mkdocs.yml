@@ -31,6 +31,7 @@ nav:
     - Conventional Commits, Semantic Versioning and CircleCI: technical-guides/release.md
     - Sealed Secrets: technical-guides/sealed-secrets.md
   - Pricing: pricing.md
+  - Startup Programs: startup-programs.md
   - About: about.md
 
 extra:
@@ -56,3 +57,8 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+
+extra_css:
+  - 'assets/extra.css'
+extra_javascript:
+  - javascripts/programs.js

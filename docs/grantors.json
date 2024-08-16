@@ -1,0 +1,386 @@
+[
+    {
+        "name": "Mixpanel for Startups",
+        "logo": "../../../../images/mixpanel.jpg",
+        "description": "Offers one year of free access to its Growth plan for startups that launched less than five years ago and have less than $8 million in funding.",
+        "category": "Analytics",
+        "url": "https://mixpanel.com/startups",
+        "promotion": "Up to $50,000 in credits"
+    },
+    {
+        "name": "Segment Startup Program",
+        "logo": "../../../../images/segment.jpg",
+        "description": "Eligible startups get full access to Segment's Team Plan (up to $25,000 value) free for up to two years.",
+        "category": "Analytics",
+        "url": "https://segment.com/industry/startups/",
+        "promotion": "Up to $25,000 in credits"
+    },
+    {
+        "name": "Amplitude for Startups",
+        "logo": "../../../../images/amplitude.png",
+        "description": "Provides one year of Amplitude's paid Growth plan features for free to eligible startups.",
+        "category": "Analytics",
+        "url": "https://amplitude.com/startups",
+        "promotion": "One year free Growth plan"
+    },
+    {
+        "name": "Instabug for Startups",
+        "logo": "../../../../images/instabug.png",
+        "description": "Offers eligible startups a discount on all plans, providing real-time contextual insights to build better apps.",
+        "category": "Bug Tracking",
+        "url": "https://instabug.com/startups",
+        "promotion": "Discounted plans for startups"
+    },
+    {
+        "name": "Zoho One for Startups",
+        "logo": "../../../../images/zoho.png",
+        "description": "A bundle of 40 different applications for both web and mobile. Eligible startups get a one-year free subscription.",
+        "category": "Business Suites",
+        "url": "https://www.zoho.com/one/startups/",
+        "promotion": "£2,500 Wallet credits"
+    },
+    {
+        "name": "Freshworks for Startups",
+        "logo": "../../../../images/freshworks.jpg",
+        "description": "Enables developers, partners, and customers to customize, integrate, and automate business workflows.",
+        "category": "Business Suites",
+        "url": "https://www.freshworks.com/startup-program/",
+        "promotion": "Upto 90% on all tools"
+    },
+    {
+        "name": "DeepSource Startup Program",
+        "logo": "../../../../images/deepsource.jpg",
+        "description": "Provides early-stage startups easy access to best-in-class developer tools and software-building infrastructure.",
+        "category": "Business Suites",
+        "url": "https://deepsource.com/blog/announcing-deepsource-startup-program",
+        "promotion": "$2,000 in credits"
+    },
+    {
+        "name": "Hatch by DigitalOcean",
+        "logo": "../../../../images/digital-ocean.png",
+        "description": "Helps developers create, launch, and scale their startups with perks including 12 months of DigitalOcean credit.",
+        "category": "Cloud Computing",
+        "url": "https://www.digitalocean.com/hatch",
+        "promotion": "Up to $50,000 in credit"
+    },
+    {
+        "name": "AWS Activate",
+        "logo": "../../../../images/aws.jpg",
+        "description": "Provides startups with AWS credits, technical support, and training to help grow their business.",
+        "category": "Cloud Computing",
+        "url": "https://aws.amazon.com/startups",
+        "promotion": "Up to $100,000 in credits"
+    },
+    {
+        "name": "Startup with IBM",
+        "logo": "../../../../images/ibm.svg",
+        "description": "Offers $120,000 in free IBM Cloud credits to put businesses on the path to transformative growth.",
+        "category": "Cloud Computing",
+        "url": "https://developer.ibm.com/startups/",
+        "promotion": "$120,000 in credits"
+    },
+    {
+        "name": "Google Cloud for Startups",
+        "logo": "../../../../images/google-cloud.jpg",
+        "description": "Empowers startups to grow with the same tools and infrastructure used to build Google. Offers Cloud credits, community events, and training.",
+        "category": "Cloud Computing",
+        "url": "https://cloud.google.com/startup",
+        "promotion": "Up to $200,000 in credits"
+    },
+    {
+        "name": "Microsoft for Startups",
+        "logo": "../../../../images/azure.png",
+        "description": "Provides access to technical resources, free Azure cloud, and opportunities to sell alongside Microsoft salespeople and partners.",
+        "category": "Cloud Computing",
+        "url": "https://startups.microsoft.com/",
+        "promotion": "Up to $150,000 in credits"
+    },
+    {
+        "name": "Alibaba Startup Program",
+        "logo": "../../../../images/alibaba-cloud.png",
+        "description": "A global program focused on accelerating business success for startups.",
+        "category": "Cloud Computing",
+        "url": "https://www.alibabacloud.com/startup",
+        "promotion": "$120,000 in credits"
+    },
+    {
+        "name": "Oracle for Startups",
+        "logo": "../../../../images/oracle.jpg",
+        "description": "Delivers a unique acceleration program enabling partnerships for startups, their customers, and Oracle, starting with free cloud.",
+        "category": "Cloud Computing",
+        "url": "https://www.oracle.com/uk/cloud/oracle-for-startups/",
+        "promotion": "Free cloud and mentorship"
+    },
+    {
+        "name": "Clever UP Program",
+        "logo": "../../../../images/clever-cloud.png",
+        "description": "An IT Automation platform managing all ops work while you focus on business value.",
+        "category": "Cloud Computing",
+        "url": "https://www.clever-cloud.com/up-program/",
+        "promotion": "Up to 10,000€ in cloud credits"
+    },
+    {
+        "name": "Heroku is for Startups",
+        "logo": "../../../../images/heroku.jpg",
+        "description": "Provides resources to quickly get started on Heroku, including platform credits, technical support, and networking.",
+        "category": "Cloud Computing",
+        "url": "https://www.heroku.com/startups",
+        "promotion": "Platform credits and support"
+    },
+    {
+        "name": "Scaleway Startup Program",
+        "logo": "../../../../images/scaleway.jpg",
+        "description": "Cloud computing partnership program designed for startups, offering access to public cloud infrastructure and technical assistance.",
+        "category": "Cloud Computing",
+        "url": "https://www.scaleway.com/en/startup-program/",
+        "promotion": "Up to €36,000 in credits"
+    },
+    {
+        "name": "MongoDB for Startups",
+        "logo": "../../../../images/mongodb.svg",
+        "description": "Free MongoDB Atlas credits, access to technical advisors, and more.",
+        "category": "Cloud Database",
+        "url": "https://www.mongodb.com/startups",
+        "promotion": "Atlas credits"
+    },
+    {
+        "name": "ScaleGrid Startup Program",
+        "logo": "../../../../images/scalegrid.jpg",
+        "description": "50% off on fully managed hosting plans for MySQL, PostgreSQL, Redis, and MongoDB.",
+        "category": "Cloud Database",
+        "url": "https://help.scalegrid.io/docs/deals-startup-program",
+        "promotion": "50% off on hosting plans"
+    },
+    {
+        "name": "Knowlarity Startup Program",
+        "logo": "../../../../images/knowlarity.jpg",
+        "description": "Knowlarity’s easy-to-integrate voice solutions deployed on the cloud enables startup businesses to kickstart their operations in no time",
+        "category": "Cloud Telephony",
+        "url": "https://www.knowlarity.com/startup-business",
+        "promotion": "20% discount for 12 months"
+    },
+    {
+        "name": "Twilio Startups Program",
+        "logo": "../../../../images/twilio.png",
+        "description": "Aims to serve startup founders globally through education, mentoring, and introductions.",
+        "category": "Cloud Telephony",
+        "url": "https://www.twilio.com/quest/startups",
+        "promotion": "Access to resources and mentoring"
+    },
+    {
+        "name": "MyOperator Startup Program [INDIA ONLY]",
+        "logo": "../../../../images/myoperator.png",
+        "description": "Provides a full-fledged call management ‘startup kit’ that helps manage business calls and enhances customer experience at zero cost.",
+        "category": "Cloud Telephony",
+        "url": "https://myoperator.com/startup-program",
+        "promotion": "Free call management startup kit"
+    },
+    {
+        "name": "Exotel for Startups [INDIA ONLY]",
+        "logo": "../../../../images/exotel.png",
+        "description": "Gives startups access to all of Exotel’s features through a special account.",
+        "category": "Cloud Telephony",
+        "url": "https://exotel.com/startups/",
+        "promotion": "Access to all features"
+    },
+    {
+        "name": "MSG91 for Startups [INDIA ONLY]",
+        "logo": "../../../../images/msg91.png",
+        "description": "Offers a complimentary communication API package with 25,000 SMS credits every month for 6 months.",
+        "category": "Cloud Telephony",
+        "url": "https://msg91.com/startups/",
+        "promotion": "25,000 SMS credits/month for 6 months"
+    },
+    {
+        "name": "Dialpad for Startups",
+        "logo": "../../../../images/dialpad.png",
+        "description": "Provides qualified startups with 10 free, lifelong seats of Dialpad Talk (business phone lines) and UberConference (video conferencing).",
+        "category": "Cloud Telephony",
+        "url": "https://www.dialpad.com/startups/",
+        "promotion": "10 free lifelong seats"
+    },
+    {
+        "name": "Agora for Startups",
+        "logo": "../../../../images/agora.png",
+        "description": "Aims to support entrepreneurs and developers incorporating live voice and video into their applications with cutting-edge real-time engagement solutions.",
+        "category": "Cloud Telephony",
+        "url": "https://www.agora.io/en/startups/",
+        "promotion": "Generous free minutes and support"
+    },
+    {
+        "name": "Intercom Early Stage Program",
+        "logo": "../../../../images/intercom.png",
+        "description": "Helps build customer relationships through conversational experiences. Eligible startups get all Pro products at a flat rate for up to one year.",
+        "category": "Customer Engagement",
+        "url": "https://www.intercom.com/startups",
+        "promotion": "$49/month for the first year"
+    },
+    {
+        "name": "GoSquared Early Stage Plan",
+        "logo": "../../../../images/gosquared.png",
+        "description": "Provides all GoSquared features for a fixed, low price for the first year to help grow your SaaS business.",
+        "category": "Customer Engagement",
+        "url": "https://www.gosquared.com/startups",
+        "promotion": "Affordable first-year pricing"
+    },
+    {
+        "name": "Zendesk for Startups",
+        "logo": "../../../../images/zendesk.png",
+        "description": "Provides qualifying net new startup customers access to Zendesk's full family of products at a 100% discount for their first 6 months.",
+        "category": "Customer Engagement",
+        "url": "https://www.zendesk.com/startups/",
+        "promotion": "6 months free for up to 100 agents"
+    },
+    {
+        "name": "Help Scout for Startups",
+        "logo": "../../../../images/helpscout.png",
+        "description": "Offers everything needed to start talking with customers and growing your business. First year is just $50/month for eligible startups.",
+        "category": "Customer Engagement",
+        "url": "https://www.helpscout.com/startups/",
+        "promotion": "$50/month for the first year"
+    },
+    {
+        "name": "Drift for Early Stage Startups",
+        "logo": "../../../../images/drift.png",
+        "description": "Provides 93% off of the Essential Plan for 1 year, helping to speed up sales cycles and increase pipeline.",
+        "category": "Customer Engagement",
+        "url": "https://www.drift.com/early-stage-startups/",
+        "promotion": "93% off Essential Plan for 1 year"
+    },
+    {
+        "name": "Crisp Startup Program",
+        "logo": "../../../../images/crisp.png",
+        "description": "Used to provide a modern customer lifecycle experience, generating more qualified leads and improving customer satisfaction.",
+        "category": "Customer Engagement",
+        "url": "https://crisp.chat/en/startups/",
+        "promotion": "Access to full features"
+    },
+    {
+        "name": "StackPath Propel Startup Program",
+        "logo": "../../../../images/stackpath.png",
+        "description": "Provides qualifying early-stage companies with 12 months of free Edge Delivery 2000 credits, tech and business mentoring, and access to exclusive events.",
+        "category": "Edge Computing",
+        "url": "https://www.stackpath.com/propel/",
+        "promotion": "12 months free Edge Delivery credits"
+    },
+    {
+        "name": "Postmark",
+        "logo": "../../../../images/postmark.png",
+        "description": "Offers $75 account credit to startups that have launched their product, are charging for it, and haven’t taken outside investment.",
+        "category": "Email Delivery",
+        "url": "https://postmarkapp.com/startups",
+        "promotion": "$75 account credit"
+    },
+    {
+        "name": "SendGrid Accelerate",
+        "logo": "../../../../images/sendgrid.png",
+        "description": "A program to help startups succeed with 12 months of product credit, mentoring, and networking opportunities.",
+        "category": "Email Delivery",
+        "url": "https://sendgrid.com/accelerate/",
+        "promotion": "12 months of product credit"
+    },
+    {
+        "name": "SOLIDWORKS 3DEXPERIENCE® Works for Startups Program",
+        "logo": "../../../../images/solidworks.png",
+        "description": "Offers software, training, and co-marketing resources at no cost to eligible early-stage hardware startups.",
+        "category": "Hardware",
+        "url": "https://www.solidworks.com/solution/startups",
+        "promotion": "Free software and resources"
+    },
+    {
+        "name": "Autodesk Fusion 360 for Startups",
+        "logo": "../../../../images/autodesk.png",
+        "description": "Eligible for startups less than three years old with fewer than 10 employees and under $100,000 USD in gross annual revenue.",
+        "category": "Hardware",
+        "url": "https://www.autodesk.com/campaigns/fusion-360/startups",
+        "promotion": "Free access to Fusion 360"
+    },
+    {
+        "name": "Zenduty Early Stage Startup Program",
+        "logo": "../../../../images/zenduty.png",
+        "description": "An incident management platform providing end-to-end incident alerting and response orchestration. Eligible startups get $3,000 in credits valid for 1 year.",
+        "category": "Incident Management",
+        "url": "https://www.zenduty.com/startups/",
+        "promotion": "$3,000 in credits for 1 year"
+    },
+    {
+        "name": "Razorpay Zero Plan [INDIA ONLY]",
+        "logo": "../../../../images/razorpay.png",
+        "description": "Offers zero transaction fees for the first 6 months (for a maximum transaction volume of ₹1 lakh per month) to kickstart online payments.",
+        "category": "Payments",
+        "url": "https://razorpay.com/zero-plan/",
+        "promotion": "Zero transaction fees for 6 months"
+    },
+    {
+        "name": "Chargebee Launch Programme",
+        "logo": "../../../../images/chargebee.png",
+        "description": "Makes managing subscription billing easier. Get the first USD 50k in revenue for free.",
+        "category": "Payments",
+        "url": "https://www.chargebee.com/launch/",
+        "promotion": "First $50k in revenue free"
+    },
+    {
+        "name": "HubSpot for Startups",
+        "logo": "../../../../images/hubspot.png",
+        "description": "Provides marketing, sales, and customer service tools at startup-friendly pricing up to 90% off.",
+        "category": "Marketing and Sales",
+        "url": "https://www.hubspot.com/startups",
+        "promotion": "Up to 90% off"
+    },
+    {
+        "name": "Gumlet",
+        "logo": "../../../../images/gumlet.png",
+        "description": "An all-in-one video infrastructure product that helps store, transcode, and stream video files. Eligible startups get $10,000 in credits valid for 12 months.",
+        "category": "Video",
+        "url": "https://www.gumlet.com/startups/",
+        "promotion": "$10,000 in credits for 12 months"
+    },
+    {
+        "name": "Shotstack Startup Program",
+        "logo": "../../../../images/shotstack.png",
+        "description": "Enables startups to build innovative video applications with their cloud-based video-editing API infrastructure. Eligible startups get $5,000 in credits valid for 12 months.",
+        "category": "Video",
+        "url": "https://shotstack.io/startups/",
+        "promotion": "$5,000 in credits for 12 months"
+    },
+    {
+        "name": "Esri Startup Program",
+        "logo": "../../../../images/esri.png",
+        "description": "A global three-year program that helps startups build mapping and location intelligence into their products and businesses.",
+        "category": "Miscellaneous",
+        "url": "https://www.esri.com/en-us/about/esri-partner-network/startups/overview",
+        "promotion": "Three-year program with resources"
+    },
+    {
+        "name": "MATLAB and Simulink for Startups",
+        "logo": "../../../../images/matlab.png",
+        "description": "Eligible early-stage technology startups can get MATLAB, Simulink, and more than 90 industry-specific toolboxes at a startup-friendly price.",
+        "category": "Miscellaneous",
+        "url": "https://www.mathworks.com/programs/startups.html",
+        "promotion": "Access to software at discounted rates"
+    },
+    {
+        "name": "FeedBear",
+        "logo": "../../../../images/feedbear.png",
+        "description": "Affordable feedback management for early-stage startups. Eligible startups get all features for just $29/month for up to one year.",
+        "category": "Miscellaneous",
+        "url": "https://feedbear.com/startups",
+        "promotion": "$29/month for first year"
+    },
+    {
+        "name": "Remote for Startups",
+        "logo": "../../../../images/remote.png",
+        "description": "Designed to help you legally and compliantly employ global talent with world-class payroll, tax, benefits, and compliance solutions at a fraction of the cost.",
+        "category": "Miscellaneous",
+        "url": "https://remote.com/startups",
+        "promotion": "Discounted rates for startups"
+    },
+    {
+        "name": "Pareto Security",
+        "logo": "../../../../images/pareto-security.png",
+        "description": "A suite of essential macOS security apps for small businesses. Use the coupon code STARTUP at checkout for a discount.",
+        "category": "Miscellaneous",
+        "url": "https://www.paretosecurity.app/",
+        "promotion": "Discount with coupon code STARTUP"
+    }
+]
