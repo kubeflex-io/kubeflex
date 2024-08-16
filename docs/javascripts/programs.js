@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document$.subscribe(function () {
     const container = document.getElementById("offers-container");
     const filter = document.getElementById("filter");
     const baseURL = window.location.origin + "/";
