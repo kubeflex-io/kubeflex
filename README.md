@@ -22,4 +22,4 @@
 
 ## Contact
 
-* Find me on [LinkedIn](https://www.linkedin.com/in/sajeeval)
+* Find us on [LinkedIn](https://www.linkedin.com/company/kubeflex)
