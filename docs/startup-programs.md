@@ -1,6 +1,7 @@
 <div>
   <h2>Startup Programs Directory</h2>
-  <p>Explore exclusive offers to support your startup's growth. If you'd like to contribute, please update  <a href="https://github.com/kubeflex-io/kubeflex/blob/main/docs/grantors.json" target="_blank">this file</a> and submit a pull request.</p>
+  <p>Explore exclusive offers to support your startup's growth.</p> 
+  <p>Offers marked with a heart icon ❤️ are affiliate links, meaning we earn a commission if you make a purchase through them. Thank you for your support!</p>
 </div>
 <select id="filter">
   <option value="All">All</option>

@@ -5,7 +5,8 @@
         "description": "Pipedrive is a cloud-based SaaS company that develops a CRM tool for sales management available as a web and mobile app",
         "category": "Marketing and Sales",
         "url": "https://aff.trypipedrive.com/ka0h9dob91lz",
-        "promotion": "30 days free"
+        "promotion": "30 days free",
+        "affiliate": true
     },
     {
         "name": "Mixpanel for Startups",

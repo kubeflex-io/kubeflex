@@ -28,6 +28,15 @@ document$.subscribe(function () {
 
                     const seeMore = document.createElement("div");
                     seeMore.className = "see-more";
+
+                    // Create heart icon if the grantor is an affiliate
+                    if (grantor.affiliate) {
+                        const heartIcon = document.createElement("span");
+                        heartIcon.className = "heart";
+                        heartIcon.innerHTML = `❤️`; // Use an emoji or a heart icon
+                        seeMore.appendChild(heartIcon);
+                    }
+
                     const seeMoreLink = document.createElement("a");
                     seeMoreLink.href = grantor.url;
                     seeMoreLink.textContent = "See more";

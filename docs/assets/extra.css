@@ -1,4 +1,4 @@
-products-offers {
+.products-offers {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -34,16 +34,13 @@ products-offers {
 
 .grantor-tile .offer {
     background-color: #f8f8f8;
-    /* Match the see-more bar background color */
     padding: 10px;
     font-size: 1em;
     color: #333;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    /* Add border to match the see-more bar */
     position: absolute;
     bottom: 40px;
-    /* Adjust to position above the see-more bar */
     left: 0;
     width: 100%;
     text-align: center;
@@ -64,4 +61,28 @@ products-offers {
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
+}
+
+.heart {
+    color: red;
+    margin-right: 5px;
+    font-size: 1.2em;
+    animation: heart 1000ms infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes heart {
+
+    0%,
+    40%,
+    80%,
+    100% {
+        transform: scale(1);
+    }
+
+    20%,
+    60% {
+        transform: scale(1.15);
+    }
 }
