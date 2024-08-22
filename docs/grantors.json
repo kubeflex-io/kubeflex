@@ -9,6 +9,15 @@
         "affiliate": true
     },
     {
+        "name": "Northwest LLC Offerings",
+        "logo": "../../../../images/northwest.png",
+        "description": "Northwest LLC provides registered agent services, business formation, and compliance assistance to help businesses meet legal requirements and maintain privacy.",
+        "category": "Legal and Compliance",
+        "url": "https://shareasale.com/r.cfm?b=965743&u=4386404&m=69959&urllink=&afftrack=",
+        "promotion": "$39 Business Formation Service",
+        "affiliate": true
+    },
+    {
         "name": "Mixpanel for Startups",
         "logo": "../../../../images/mixpanel.jpg",
         "description": "Event analytics service company that tracks user interactions with web and mobile applications",
