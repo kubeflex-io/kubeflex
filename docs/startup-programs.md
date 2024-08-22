@@ -13,6 +13,7 @@
   <option value="Cloud Communication">Cloud Communication</option>
   <option value="Customer Engagement">Customer Engagement</option>
   <option value="Incident Management">Incident Management</option>
+  <option value="Legal and Compliance">Legal and Compliance</option>
   <option value="Marketing and Sales">Marketing and Sales</option>
   <option value="Payments">Payments</option>
   <option value="Productivity">Productivity</option>
