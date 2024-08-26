@@ -18,6 +18,15 @@
         "affiliate": true
     },
     {
+        "name": "Bizee Offerings",
+        "logo": "../../../../images/bizee.png",
+        "description": "Bizee is a national document filing service company strictly specializing in the formation of business entities",
+        "category": "Legal and Compliance",
+        "url": "https://shareasale.com/r.cfm?b=617326&u=4386404&m=53954&urllink=&afftrack=",
+        "promotion": "$0 (+State Fee) LLC Registration",
+        "affiliate": true
+    },
+    {
         "name": "Mixpanel for Startups",
         "logo": "../../../../images/mixpanel.jpg",
         "description": "Event analytics service company that tracks user interactions with web and mobile applications",
