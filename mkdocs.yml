@@ -67,3 +67,5 @@ extra_css:
   - 'assets/extra.css'
 extra_javascript:
   - javascripts/programs.js
+  - javascripts/certifications.js
+  - javascripts/trainings.js
