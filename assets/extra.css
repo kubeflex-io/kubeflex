@@ -1,0 +1,88 @@
+.products-offers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Adjust spacing between items */
+}
+
+.grantor-tile {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 40%;
+    height: 400px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.grantor-tile img {
+    max-width: 100px;
+    height: auto;
+}
+
+.grantor-tile h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.grantor-tile p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.grantor-tile .offer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    font-size: 1em;
+    color: #333;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.grantor-tile .see-more {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.grantor-tile .see-more a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.heart {
+    color: red;
+    margin-right: 5px;
+    font-size: 1.2em;
+    animation: heart 1000ms infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes heart {
+
+    0%,
+    40%,
+    80%,
+    100% {
+        transform: scale(1);
+    }
+
+    20%,
+    60% {
+        transform: scale(1.15);
+    }
+}

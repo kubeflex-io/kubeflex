@@ -1,0 +1,2068 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.kubeflex.io/technical-guides/auth/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../cert-manager/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Authentication and Authorisation with Keycloak and Istio - KubeFlex</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#authentication-and-authorization-with-istio-and-keycloak" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://kubeflex.io" title="KubeFlex" class="md-header__button md-logo" aria-label="KubeFlex" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KubeFlex
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication and Authorisation with Keycloak and Istio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kubeflex-io/kubeflex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Technical Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../pricing/" class="md-tabs__link">
+        
+  
+    
+  
+  Pricing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../startup-programs/" class="md-tabs__link">
+        
+  
+    
+  
+  Startup Programs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../trainings/" class="md-tabs__link">
+        
+  
+    
+  
+  Training Offers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../certifications/" class="md-tabs__link">
+        
+  
+    
+  
+  Certification Offers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://kubeflex.io" title="KubeFlex" class="md-nav__button md-logo" aria-label="KubeFlex" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    KubeFlex
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kubeflex-io/kubeflex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Technical Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Authentication and Authorisation with Keycloak and Istio
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Authentication and Authorisation with Keycloak and Istio
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Keycloak
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Istio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-job-service-without-authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying job-service without Authentication and Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying job-service without Authentication and Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job category
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-category-by-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job category by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-by-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job by ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-authentication-with-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Authentication with Istio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Authentication with Istio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-by-id_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job-category_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job category
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-category-by-id_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job category by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating a token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improving-the-code-with-additional-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improving the Code with Additional Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving the Code with Additional Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#populate-owner_id-during-job-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populate owner_id during job creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-the-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate the ownership
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-authorization-with-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Authorization with Istio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Authorization with Istio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-job-category-regular-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Job Category - Regular User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-job-category-admin-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Job Category - Admin User
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-authorization-between-microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Authorization between MicroServices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cert Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../circleci/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CircleCi Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluxcd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FluxCD Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helmrepositories/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm Repositories
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingressgateway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Istio IngressGatway with Let's Encrypt Certificate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../istio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Istio Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak, Istio and Let’s Encrypt Certificate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../local/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local Development Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MinIO Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Observability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conventional Commits, Semantic Versioning and CircleCI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sealed Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pricing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pricing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../startup-programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Startup Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../trainings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training Offers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certification Offers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Keycloak
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Istio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-job-service-without-authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying job-service without Authentication and Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying job-service without Authentication and Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job category
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-category-by-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job category by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-by-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job by ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-authentication-with-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Authentication with Istio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Authentication with Istio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-by-id_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job-category_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job category
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-job-category-by-id_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get job category by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating a token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-job_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a new job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improving-the-code-with-additional-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improving the Code with Additional Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving the Code with Additional Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#populate-owner_id-during-job-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populate owner_id during job creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-the-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate the ownership
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-authorization-with-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Authorization with Istio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Authorization with Istio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-job-category-regular-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Job Category - Regular User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-job-category-admin-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Job Category - Admin User
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-authorization-between-microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Authorization between MicroServices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="authentication-and-authorization-with-istio-and-keycloak">Authentication and Authorization with Istio and Keycloak</h1>
+<p>In this guide, we will explore how to leverage Istio to implement authentication and authorization using Keycloak. The goal is to simplify development, allowing developers to focus on their core tasks without worrying about authentication and authorization. We will cover this step-by-step with practical examples and working sample codes.</p>
+<p><img alt="Alt text" src="../../../images/auth.png?raw=true" title="Mesh" /></p>
+<h2 id="contents">Contents</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Introduction to Keycloak</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Introduction to Istio</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Introduction to FastAPI</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Deploying the job-service Microservice without Authentication and Authorization<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Istio Weight-Based Traffic Routing between job-service-v1 and job-service-v2</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Implementing Authentication with Istio<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Passing the JWT Token to Backend Services</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Improving the Code with Additional Constraints<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Decoding the Token to get the Logged-in User</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Validate the Ownership of an Item</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Implementing Authorization with Istio (Based on Keycloak Roles)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Implementing Authorization between Microservices</li>
+</ul>
+<h2 id="introduction-to-keycloak">Introduction to Keycloak</h2>
+<p>Keycloak is an open-source identity and access management solution that offers single sign-on (SSO) capabilities, allowing users to authenticate once and access multiple applications and services with a single set of credentials. One of the features I find particularly impressive is Keycloak's ability to simplify the development process by enabling the integration of custom themes for the authentication flow, such as the login page. In this scenario, we have deployed Keycloak within the same Kubernetes cluster.</p>
+<p>Following is the Dockerfile which we use to build a custom Keycloak image with our own theme and the event listener. 
+<div class="highlight"><pre><span></span><code>FROM quay.io/keycloak/keycloak:24.0.3
+COPY ./kubeflex-theme /opt/keycloak/themes/kubeflex-theme
+COPY ./providers/create-account-custom-spi.jar /opt/keycloak/providers/create-account-custom-spi.jar
+</code></pre></div>
+We use the following deployment manifest to deploy Keycloak. </p>
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      serviceAccountName: keycloak
+      automountServiceAccountToken: true
+      containers:
+        - name: keycloak
+          image: eocontainerregistry.azurecr.io/keycloak:v1.8.6 # {&quot;$imagepolicy&quot;: &quot;flux-system:keycloak&quot;}
+          args: [&quot;start&quot;]
+          env:
+            - name: KEYCLOAK_ADMIN
+              value: &quot;admin&quot;
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak
+                  key: admin-password
+            - name: KC_HOSTNAME
+              value: auth.kubeflex.io
+            - name: KC_PROXY
+              value: &quot;edge&quot;
+            - name: KC_DB
+              value: mysql
+            - name: KC_DB_URL
+              value: &quot;jdbc:mysql://keycloakdb-keycloakdb-mysql.keycloakdb.svc.cluster.local:3306/keycloakdb&quot;
+            - name: KC_DB_USERNAME
+              value: &quot;keycloak-user&quot;
+            - name: jgroups.dns.query
+              value: keycloak
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak
+                  key: db-password
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: jgroups
+              containerPort: 7600
+      imagePullSecrets:
+        - name: acr-secret
+</code></pre></div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Notice FluxCD <code>imagepolicy</code> reference in the manifest file. With this, we can automate the deployment whenever a new image is available in the image repository. </p>
+</details>
+<h2 id="introduction-to-istio">Introduction to Istio</h2>
+<p>Istio is an open-source service mesh platform designed to manage how microservices communicate and share data. It provides a variety of features to improve the observability, security, and management of microservice applications. We will soon discuss how we have configured Istio.</p>
+<h2 id="introduction-to-fastapi">Introduction to FastAPI</h2>
+<p>FastAPI is a modern Python framework that is rapidly gaining popularity. It is designed for rapid development and to maximize the developer experience. In this example, we will use two versions of a job API (<a href="https://github.com/kubeflex-io/job-service-v1">V1</a>,  <a href="https://github.com/kubeflex-io/job-service-v2">V2</a>,) written in FastAPI. The API utilizes the SQLModel library to interact with the backend database, combining features from both SQLAlchemy and Pydantic. </p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>SQLModel is developed by the same author as FastAPI. </p>
+</details>
+<h2 id="deploying-job-service-without-authentication-and-authorization">Deploying job-service without Authentication and Authorization</h2>
+<p>Let's start with something simpler: a working microservice without any authentication or authorization. </p>
+<p>Here are the deployment manifests for job-service v1 and job-service v2, both running in the "job-service" namespace. Take note of the version label in each deployment manifest. 
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: job-service
+    version: v1
+  name: job-service
+  namespace: job-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: job-service
+        version: v1
+    spec:
+      serviceAccountName: job-service
+      automountServiceAccountToken: true
+      containers:
+      - image: eocontainerregistry.azurecr.io/job-service:v1.0.3 # {&quot;$imagepolicy&quot;: &quot;flux-system:job-service-v1&quot;}
+        name: job-service
+        env:
+        - name: DB_HOST
+          value: &quot;keycloakdb-keycloakdb-mysql.keycloakdb.svc.cluster.local&quot;
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: job-service
+              key: db-password
+        - name: DB_PORT
+          value: &quot;3306&quot;
+        - name: DB_USER
+          value: &quot;job-service&quot;
+        - name: DB_NAME
+          value: &quot;job-service&quot;
+        resources:
+          requests:
+            memory: &quot;64Mi&quot;
+            cpu: &quot;50m&quot;
+      imagePullSecrets:
+      - name: acr-secret
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: job-service
+    version: v2
+  name: job-service-v2
+  namespace: job-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job-service
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: job-service
+        version: v2
+    spec:
+      serviceAccountName: job-service
+      automountServiceAccountToken: true
+      containers:
+      - image: eocontainerregistry.azurecr.io/job-service-v2:v1.1.3 # {&quot;$imagepolicy&quot;: &quot;flux-system:job-service-v2&quot;}
+        name: job-service
+        env:
+        - name: DB_HOST
+          value: &quot;keycloakdb-keycloakdb-mysql.keycloakdb.svc.cluster.local&quot;
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: job-service
+              key: db-password
+        - name: DB_PORT
+          value: &quot;3306&quot;
+        - name: DB_USER
+          value: &quot;job-service&quot;
+        - name: DB_NAME
+          value: &quot;job-service&quot;
+        resources:
+          requests:
+            memory: &quot;64Mi&quot;
+            cpu: &quot;50m&quot;
+      imagePullSecrets:
+      - name: acr-secret
+</code></pre></div>
+<p>We also have a ClusterIP service with the selector "app=job-service." This configuration ensures that both job-service v1 and job-service v2 are added as endpoints of this service.</p>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: job-service
+    kustomize.toolkit.fluxcd.io/name: flux-system
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: job-service
+  namespace: job-service
+spec:
+  ports:
+  - port: 80
+    name: http
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: job-service
+  type: ClusterIP
+</code></pre></div>
+<p>Additionally, note that we are using the same database instance for both Keycloak and the job-service versions. However, the respective users are restricted from accessing each other's databases. This setup, despite sharing the same instance, effectively mimics a microservice architecture.</p>
+<p>For the first step, we want to route all traffic exclusively to the v1 deployment. (If you look at job-service v1, you'll see that it has been written without any authentication or authorization in the code. We plan to implement these features using Istio in the upcoming steps.)</p>
+<p>To achieve this, we create a virtual service and a destination rule as follows. </p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: job-service
+  namespace: job-service
+spec:
+  hosts:
+    - &quot;www.kubeflex.io&quot;
+    - &quot;kubeflex.io&quot;
+    - job-service.job-service.svc.cluster.local
+  gateways:
+    - istio-system/gateway
+    - mesh
+  http:
+    - match:
+        - uri:
+            prefix: &quot;/api/jobs&quot;
+        - uri:
+            prefix: &quot;/api/jobcategories&quot;
+      route:
+        - destination:
+            host: job-service.job-service.svc.cluster.local
+            subset: v1
+          weight: 100
+        - destination:
+            host: job-service.job-service.svc.cluster.local
+            subset: v2
+          weight: 0
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: job-service
+  namespace: job-service
+spec:
+  host: job-service.job-service.svc.cluster.local
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+</code></pre></div>
+Note that under the gateways section, we specify both our ingress gateway and "mesh." This is because we expect traffic from both the external gateway and other microservices within the cluster. Observe how we have directed 100% of the traffic to the v1 deployment.</p>
+<p>Below is Istio gateway resource. It handles traffic destined for the kubeflex.io domain. Additionally, we've attached a Let's Encrypt TLS certificate to the gateway using cert-manager.
+<div class="highlight"><pre><span></span><code>apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: kubeflex-tls
+      hosts:
+      - &quot;www.kubeflex.io&quot;
+      - &quot;kubeflex.io&quot;
+      - &quot;auth.kubeflex.io&quot;
+</code></pre></div>
+We can use Kiali dashboard to validate our routing configuration. Note that, <code>job-service</code> connects to the same <code>keycloakdb</code> MySQL instance. But in reality, <code>job-service</code> has access only to it's specific <code>job-service</code> database inside the instance. </p>
+<p><img alt="Alt text" src="../../images/kiali.png?raw=true" title="Routing" /></p>
+<p>Now we are ready to do some testing. </p>
+<h4 id="creating-a-new-job-category">Creating a new job category</h4>
+<div class="highlight"><pre><span></span><code> curl --location &#39;https://kubeflex.io/api/jobcategories/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data &#39;{
+    &quot;name&quot;: &quot;Information Technology&quot;
+}&#39;
+{&quot;name&quot;:&quot;Information Technology&quot;,&quot;id&quot;:17}
+</code></pre></div>
+<h4 id="creating-a-new-job">Creating a new job</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobs/&#39; \ &#39;https://kubeflex.io/api/jobs/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data &#39;{
+  &quot;title&quot;: &quot;Software Engineer&quot;,
+  &quot;description&quot;: &quot;Software Engineer with 2 years of experience&quot;,
+  &quot;owner_id&quot;: &quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,
+  &quot;category_id&quot;: 17
+}&#39;
+{&quot;title&quot;:&quot;Software Engineer&quot;,&quot;description&quot;:&quot;Software Engineer with 2 years of experience&quot;,&quot;owner_id&quot;:&quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,&quot;category_id&quot;:17,&quot;id&quot;:&quot;f19e68da-e40a-4954-9dbf-6dfaf1f7f4d4&quot;}
+</code></pre></div>
+<h4 id="get-job-category-by-id">Get job category by ID</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobcategories/17&#39;
+{&quot;name&quot;:&quot;Information Technology&quot;,&quot;id&quot;:17}
+</code></pre></div>
+<h4 id="get-job-by-id">Get job by ID</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d87&#39;
+{&quot;title&quot;:&quot;Software Engineer&quot;,&quot;description&quot;:&quot;Software Engineer with 2 years of experience&quot;,&quot;owner_id&quot;:&quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,&quot;category_id&quot;:17,&quot;id&quot;:&quot;bff285f6-34f6-4c5f-9619-2e860bec2d87&quot;}
+</code></pre></div>
+<p>As you can see, there is no authentication or authorization on these endpoints. Anyone can create, update, delete, or retrieve jobs and job categories.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Note: I used Swagger, which is integrated with FastAPI, to generate the sample curl requests.</p>
+</div>
+<p>Also, please note that when creating new jobs, we manually pass the <code>owner_id</code> with the request. Ideally, this should be the user ID of the logged-in user. We will delve further into this when discussing job-service v2.</p>
+<h2 id="implementing-authentication-with-istio">Implementing Authentication with Istio</h2>
+<p>Let's secure our endpoints.</p>
+<p>Firstly, let's add the RequestAuthentication resource, which defines the supported request authentications for the workload. This configuration ensures that Istio rejects any request with invalid authentication information. Below, we have defined our Keycloak issuer URL and public certificate URL to enable Istio to verify the token signature.</p>
+<div class="highlight"><pre><span></span><code>apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: job-service
+  namespace: job-service
+spec:
+  selector:
+     matchLabels:
+      app: job-service
+  jwtRules:
+   - issuer: &quot;https://auth.kubeflex.io/realms/kubeflex&quot;
+     jwksUri: &quot;https://auth.kubeflex.io/realms/kubeflex/protocol/openid-connect/certs&quot;
+     forwardOriginalToken: true
+</code></pre></div>
+<p>Additionally, we have set "forwardOriginalToken": true, as we need to pass the token in the format "Authorization: Bearer <token>" to the backend service. You can also pass the token to the backend service under a custom header name. For instance, you can use the following code snippet to pass the token as a value of the key "jwt_parsed":
+<div class="highlight"><pre><span></span><code>   jwtRules:
+    - issuer: &quot;https://auth.kubeflex.io/realms/kubeflex&quot;
+      jwksUri: &quot;https://auth.kubeflex.io/realms/kubeflex/protocol/openid-connect/certs&quot;
+      outputPayloadToHeader: jwt-parsed
+</code></pre></div></p>
+<p>Now, RequestAuthentication will reject any request with an invalid token. However, requests without any authentication information will still be accepted, but they won't have an authenticated identity. To handle these cases, in addition to RequestAuthentication, we need to drop requests that lack an authentication identity. Therefore, we add an authorization policy as follows:</p>
+<div class="highlight"><pre><span></span><code>apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: job-service
+  namespace: job-service
+spec:
+  selector:
+    matchLabels:
+       app: job-service
+  rules:
+  - to:
+    - operation:
+        methods: [&quot;GET&quot;]
+  - from:
+    - source:
+        requestPrincipals: [&quot;*&quot;]
+    to:
+    - operation:
+        methods: [&quot;POST&quot;, &quot;DELETE&quot;, &quot;PATCH&quot;]
+        paths: [&quot;/api/jobs*&quot;]
+    - operation:
+        methods: [&quot;POST&quot;, &quot;DELETE&quot;, &quot;PATCH&quot;]
+        paths: [&quot;/api/jobcategories*&quot;]
+</code></pre></div>
+<p>So, with the above AuthorizationPolicy, we have allowed unrestricted access to the GET method for anyone. However, authentication is required for any other methods on the job and jobcategory endpoints.</p>
+<p>Let's test some endpoints:</p>
+<h4 id="creating-a-new-job_1">Creating a new job</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobs/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data &#39;{
+  &quot;title&quot;: &quot;Software Engineer II&quot;,
+  &quot;description&quot;: &quot;Software Engineer with 2 years of experience&quot;,
+  &quot;owner_id&quot;: &quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,
+  &quot;category_id&quot;: 17
+}&#39;
+RBAC: access denied
+</code></pre></div>
+<h4 id="get-job-by-id_1">Get job by ID</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobs/bff285f6-34f6-4c5f-9619-2e860bec2d87&#39;
+{&quot;title&quot;:&quot;Software Engineer&quot;,&quot;description&quot;:&quot;Software Engineer with 2 years of experience&quot;,&quot;owner_id&quot;:&quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,&quot;category_id&quot;:17,&quot;id&quot;:&quot;bff285f6-34f6-4c5f-9619-2e860bec2d87&quot;}
+</code></pre></div>
+<h4 id="creating-a-new-job-category_1">Creating a new job category</h4>
+<div class="highlight"><pre><span></span><code> curl --location &#39;https://kubeflex.io/api/jobcategories/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data &#39;{
+    &quot;name&quot;: &quot;Computer Science&quot;
+}&#39;
+RBAC: access denied
+</code></pre></div>
+<h4 id="get-job-category-by-id_1">Get job category by ID</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobcategories/17&#39;
+{&quot;name&quot;:&quot;Information Technology&quot;,&quot;id&quot;:17}
+</code></pre></div>
+<p>As observed, we can retrieve information without authentication. However, authentication is necessary for adding, modifying, or deleting entries.</p>
+<p>Next, let's generate a token by calling the Keycloak token URL and use it to perform add, modify, or delete operations:</p>
+<h4 id="generating-a-token">Generating a token</h4>
+<p><div class="highlight"><pre><span></span><code>curl --location &#39;https://auth.kubeflex.io/realms/kubeflex/protocol/openid-connect/token&#39; \
+--header &#39;Content-Type: application/x-www-form-urlencoded&#39; \
+--data-urlencode &#39;grant_type=password&#39; \
+--data-urlencode &#39;client_id=kubeflex-platform&#39; \
+--data-urlencode &#39;username=&lt;username&gt;&#39; \
+--data-urlencode &#39;password=&lt;password&gt;&#39;
+</code></pre></div>
+This returns an access token, which we can use for subsequent requests. </p>
+<h4 id="creating-a-new-job_2">Creating a new job</h4>
+<p><div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobs/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer &lt;token&gt;&#39; \
+--data &#39;{
+  &quot;title&quot;: &quot;Software Engineer II&quot;,
+  &quot;description&quot;: &quot;Software Engineer with 2 years of experience&quot;,
+  &quot;owner_id&quot;: &quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,
+  &quot;category_id&quot;: 17
+}&#39;
+
+{
+    &quot;title&quot;: &quot;Software Engineer II&quot;,
+    &quot;description&quot;: &quot;Software Engineer with 2 years of experience&quot;,
+    &quot;owner_id&quot;: &quot;5690cc29-5008-4a81-8f08-db92e01d6d44&quot;,
+    &quot;category_id&quot;: 17,
+    &quot;id&quot;: &quot;571c9ce6-566f-4e57-a780-9af5275ce5ef&quot;
+}
+</code></pre></div>
+As demonstrated, authenticated users are able to successfully add, modify, or delete jobs and job categories.</p>
+<h2 id="improving-the-code-with-additional-constraints">Improving the Code with Additional Constraints</h2>
+<p>At this point, if you examine the source code of (<a href="https://github.com/kubeflex-io/job-service-v1">job-service-v1</a>, you'll notice it focuses solely on core functionality without incorporating authentication and authorization concerns, which are managed entirely by Istio. However, this approach has some drawbacks. </p>
+<p>We currently need to manually provide the owner_id when creating a job, whereas ideally, this should be automatically set to the ID of the logged-in user. Moreover, a user should not have the ability to modify a job created by someone else. This necessitates that the backend service is aware of the logged-in user's ID and can enforce this constraint. We have addressed these issues in the <a href="https://github.com/kubeflex-io/job-service-v2">v2 service</a>. Please see the implementation here.</p>
+<h4 id="populate-owner_id-during-job-creation">Populate owner_id during job creation</h4>
+<p><div class="highlight"><pre><span></span><code>@router.post(&quot;/&quot;, response_model=JobPublic)
+def create_job(*, session: Session = Depends(get_session), job: JobCreate, request: Request, user_id: str = Depends(get_user_id_from_token)):
+    db_job = Job.model_validate(job)
+    db_job.id = str(uuid.uuid4())
+    db_job.owner_id = user_id
+    session.add(db_job)
+    session.commit()
+    session.refresh(db_job)
+
+    return db_job
+</code></pre></div>
+In this post method, we have included <code>get_user_id_from_token</code> as a dependency to inject the <code>user_id</code> into <code>owner_id</code> during job creation.</p>
+<div class="highlight"><pre><span></span><code>def get_user_id_from_token(request: Request) -&gt; str:
+    try:
+        token = request.headers.get(&quot;Authorization&quot;).split(&quot;Bearer &quot;)[1]
+        payload = jwt.decode(token, options={&quot;verify_signature&quot;: False})
+        user_id: str = payload.get(&quot;sub&quot;)
+        if user_id is None:
+            raise HTTPException(status_code=401, detail=&quot;User ID not found in token&quot;)
+        return user_id
+    except:
+        raise HTTPException(status_code=401, detail=&quot;Could not validate credentials&quot;)
+</code></pre></div>
+<h4 id="validate-the-ownership">Validate the ownership</h4>
+<p>In the following PATCH method, we validate whether the job is owned by the logged-in user. If not, the user is not allowed to modify the job.</p>
+<div class="highlight"><pre><span></span><code>@router.patch(&quot;/{job_id}&quot;, response_model=JobPublic)
+def update_job(*, session: Session = Depends(get_session), job_id: str, job: JobUpdate, request: Request, user_id: str = Depends(get_user_id_from_token)):
+    db_job = session.get(Job, job_id)
+    if not db_job:
+        raise HTTPException(status_code=404, detail=&quot;Job not found&quot;)
+    if db_job.owner_id != user_id:
+        raise HTTPException(status_code=403, detail=&quot;You do not have permission to update this job&quot;)
+    job_data = job.model_dump(exclude_unset=True)
+    db_job.sqlmodel_update(job_data)
+    session.add(db_job)
+    session.commit()
+    session.refresh(db_job)
+    return db_job
+</code></pre></div>
+<p>Let's route all traffic to job-service v2. We can achieve this by modifying the virtual service.
+<div class="highlight"><pre><span></span><code>apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: job-service
+  namespace: job-service
+spec:
+  hosts:
+    - &quot;www.kubeflex.io&quot;
+    - &quot;kubeflex.io&quot;
+    - job-service.job-service.svc.cluster.local
+  gateways:
+    - istio-system/gateway
+    - mesh
+  http:
+    - match:
+        - uri:
+            prefix: &quot;/api/jobs&quot;
+        - uri:
+            prefix: &quot;/api/jobcategories&quot;
+      route:
+        - destination:
+            host: job-service.job-service.svc.cluster.local
+            subset: v1
+          weight: 0
+        - destination:
+            host: job-service.job-service.svc.cluster.local
+            subset: v2
+          weight: 100
+</code></pre></div>
+Now, Let's try to create a job without <code>owner_id</code>. Please note that, now <code>JobCreate</code> data model no longer has <code>owner_id</code> attribute. </p>
+<p><div class="highlight"><pre><span></span><code> curl --location &#39;https://kubeflex.io/api/jobs/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer &lt;token&gt;&#39; \
+--data &#39;{
+  &quot;title&quot;: &quot;Software Engineer III&quot;,
+  &quot;description&quot;: &quot;Software Engineer with 2 years of experience&quot;,
+  &quot;category_id&quot;: 17
+}&#39;
+{&quot;title&quot;:&quot;Software Engineer III&quot;,&quot;description&quot;:&quot;Software Engineer with 2 years of experience&quot;,&quot;category_id&quot;:17,&quot;id&quot;:&quot;b3b1baa8-91bc-42bd-9736-94f13b39b610&quot;,&quot;owner_id&quot;:&quot;78de9a7a-7bcb-4b61-9c27-478704a1986a&quot;}
+</code></pre></div>
+As you can see, we do not require to specify the <code>owner_id</code>. FastAPI automatically inject the ID of the logged-in user. </p>
+<p>Let's try to modify a job </p>
+<p>Let's attempt to modify a job owned by someone else.</p>
+<p><div class="highlight"><pre><span></span><code>curl --location --request PATCH &#39;https://kubeflex.io/api/jobs/2f736c4d-11ba-421f-953a-d1d6f0e5b653&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer &lt;token&gt;&#39; \
+--data &#39;{
+  &quot;title&quot;: &quot;Software Engineer IV&quot;
+}&#39;
+{&quot;detail&quot;:&quot;You do not have permission to update this job&quot;}
+</code></pre></div>
+As you can see, we are unable to modify jobs owned by someone else.</p>
+<h2 id="implementing-authorization-with-istio">Implementing Authorization with Istio</h2>
+<p>At this point, we have configured authentication. When it comes to job categories, we do not expect a large number to be present in the database. It makes sense to maintain a limited number of job categories and restrict creation, modification, and deletion to admin users only.</p>
+<p>Currently, anyone with valid authentication can modify job categories. Let's see how we can implement authorization.</p>
+<p>We modify our authorization policy to ensure that only users with the admin role can modify job categories. Alternatively, you can use "groups" if you have a more complex user hierarchy.</p>
+<p><div class="highlight"><pre><span></span><code>apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: job-service
+  namespace: job-service
+spec:
+  selector:
+    matchLabels:
+      app: job-service
+  rules:
+  - to:
+    - operation:
+        methods: [&quot;GET&quot;]
+  - from:
+    - source:
+        requestPrincipals: [&quot;*&quot;]
+    to:
+    - operation:
+        methods: [&quot;POST&quot;, &quot;DELETE&quot;, &quot;PATCH&quot;]
+        paths: [&quot;/api/jobs*&quot;]
+  - from:
+    - source:
+        requestPrincipals: [&quot;*&quot;]
+    when:
+    - key: request.auth.claims[realm_access][roles]
+      values: [&quot;admin&quot;]
+    to:
+    - operation:
+        methods: [&quot;POST&quot;, &quot;DELETE&quot;, &quot;PATCH&quot;]
+        paths: [&quot;/api/jobcategories*&quot;]
+</code></pre></div>
+We can create the admin role by navigating to "Realm Roles" under the Keycloak realm we use. After that, we go to the respective user we want to assign the admin role to, click on the "Role Mapping" tab, and add the user to the newly created "admin" role.</p>
+<p><img alt="Alt text" src="../../images/realm-roles.png?raw=true" title="RealmRoles" /></p>
+<p><img alt="Alt text" src="../../images/role-mapping.png?raw=true" title="RoleMapping" /></p>
+<h4 id="creating-a-job-category-regular-user">Creating a Job Category - Regular User</h4>
+<div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobcategories/&#39; \location &#39;https://kubeflex.io/api/jobcategories/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer &lt;token&gt;&#39; \
+--data &#39;{
+    &quot;name&quot;: &quot;Research&quot;
+}&#39;
+RBAC: access denied
+</code></pre></div>
+<h4 id="creating-a-job-category-admin-user">Creating a Job Category - Admin User</h4>
+<p><div class="highlight"><pre><span></span><code>curl --location &#39;https://kubeflex.io/api/jobcategories/&#39; \i/jobcategories/&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer &lt;token&gt;&#39; \
+--data &#39;{
+    &quot;name&quot;: &quot;Research&quot;
+}&#39;
+{&quot;name&quot;:&quot;Research&quot;,&quot;id&quot;:20}
+</code></pre></div>
+As we can see, only admin users can create/update/delete job categories now. </p>
+<h2 id="implementing-authorization-between-microservices">Implementing Authorization between MicroServices</h2>
+<p>Now we add another microservice called "job-notification-service". 
+<img alt="Alt text" src="../../images/job-notification-service.png?raw=true" title="JobNotificationService" /></p>
+<p>This service is not exposed via the gateway and should be accessible only by "job-service". To achieve this, we can add the following authorization policy.</p>
+<p><div class="highlight"><pre><span></span><code>apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: job-notification-service
+  namespace: job-notification-service
+spec:
+  selector:
+    matchLabels:
+      app: job-notification-service
+  rules:
+  - from:
+    - source:
+        namespaces: [&quot;job-service&quot;]
+        principals: [&quot;cluster.local/ns/job-service/sa/job-service&quot;]
+</code></pre></div>
+PeerAuthentication to enforce mTLS between two services
+<div class="highlight"><pre><span></span><code>apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: job-notification-service-mtls
+  namespace: job-notification-service
+spec:
+  selector:
+    matchLabels:
+      app: job-notification-service
+  mtls:
+    mode: STRICT
+</code></pre></div></p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Please note that if the job-notification-service requires the requester's details, we must pass the token from the job-service to the job-notification-service programmatically. Istio, by default, will only propagate the JWT token for one hop.</p>
+</details>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Alternatively, you can decode the token in the job-service and pass the decoded user details when calling the job-notification-service APIs.</p>
+</details>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, we have implemented authentication and authorization for our microservices using Istio and Keycloak, ensuring secure access to resources. We've configured policies to control access based on roles and user identities, enhancing the overall security posture of our applications.</p>
+<p>I welcome any feedback you may have regarding areas for improvement, any aspects that may have been overlooked, or suggestions to enhance this document. </p>
+<p>Note: This page is part of Cloud Agnostic Platform guide. Click <a href="https://github.com/kubeflex-io/kubeflex/tree/main">here</a> to access the main page.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/kubeflex-io/kubeflex" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/kubeflex" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../javascripts/programs.js"></script>
+      
+        <script src="../../javascripts/certifications.js"></script>
+      
+        <script src="../../javascripts/trainings.js"></script>
+      
+    
+  </body>
+</html>

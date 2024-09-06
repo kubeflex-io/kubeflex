@@ -1,0 +1,357 @@
+[
+    {
+        "name": "Pipedrive Offerings",
+        "logo": "../../../../images/pipedrive.png",
+        "description": "Pipedrive is a cloud-based SaaS company that develops a CRM tool for sales management available as a web and mobile app",
+        "category": "Marketing and Sales",
+        "url": "https://aff.trypipedrive.com/ka0h9dob91lz",
+        "promotion": "30 days free",
+        "affiliate": true
+    },
+    {
+        "name": "Northwest LLC Offerings",
+        "logo": "../../../../images/northwest.png",
+        "description": "Northwest LLC provides registered agent services, business formation, and compliance assistance to help businesses meet legal requirements and maintain privacy.",
+        "category": "Legal and Compliance",
+        "url": "https://shareasale.com/r.cfm?b=965743&u=4386404&m=69959&urllink=&afftrack=",
+        "promotion": "$39 Business Formation Service",
+        "affiliate": true
+    },
+    {
+        "name": "Bizee Offerings",
+        "logo": "../../../../images/bizee.png",
+        "description": "Bizee is a national document filing service company strictly specializing in the formation of business entities",
+        "category": "Legal and Compliance",
+        "url": "https://shareasale.com/r.cfm?b=617326&u=4386404&m=53954&urllink=&afftrack=",
+        "promotion": "$0 (+State Fee) LLC Registration",
+        "affiliate": true
+    },
+    {
+        "name": "Mixpanel for Startups",
+        "logo": "../../../../images/mixpanel.jpg",
+        "description": "Event analytics service company that tracks user interactions with web and mobile applications",
+        "category": "Analytics",
+        "url": "https://mixpanel.com/startups",
+        "promotion": "Up to $50,000 in credits"
+    },
+    {
+        "name": "Segment Startup Program",
+        "logo": "../../../../images/segment.jpg",
+        "description": "Provides the customer data infrastructure that helps businesses put their customers first.",
+        "category": "Analytics",
+        "url": "https://segment.com/industry/startups/",
+        "promotion": "Up to $25,000 in credits"
+    },
+    {
+        "name": "Amplitude for Startups",
+        "logo": "../../../../images/amplitude.png",
+        "description": "Provides digital analytics software",
+        "category": "Analytics",
+        "url": "https://amplitude.com/startups",
+        "promotion": "One year free Growth plan"
+    },
+    {
+        "name": "Instabug for Startups",
+        "logo": "../../../../images/instabug.png",
+        "description": "software company that provides bug reporting, app performance monitoring, crash reporting, in-app chats, and user surveys for mobile apps",
+        "category": "Bug Tracking",
+        "url": "https://instabug.com/startups",
+        "promotion": "Discounted plans for startups"
+    },
+    {
+        "name": "Zoho One for Startups",
+        "logo": "../../../../images/zoho.png",
+        "description": "An Indian multinational technology company that makes computer software and web-based business tools",
+        "category": "Business Suites",
+        "url": "https://www.zoho.com/one/startups/",
+        "promotion": "£2,500 Wallet credits"
+    },
+    {
+        "name": "Freshworks for Startups",
+        "logo": "../../../../images/freshworks.jpg",
+        "description": "Provides cloud-based tools for customer relationship management (CRM), IT service management (ITSM), and e-commerce marketing",
+        "category": "Business Suites",
+        "url": "https://www.freshworks.com/startup-program/",
+        "promotion": "Upto 90% on all tools"
+    },
+    {
+        "name": "DeepSource Startup Program",
+        "logo": "../../../../images/deepsource.jpg",
+        "description": "Builds maintainable, secure software with the code health platform",
+        "category": "Business Suites",
+        "url": "https://deepsource.com/blog/announcing-deepsource-startup-program",
+        "promotion": "$2,000 in credits"
+    },
+    {
+        "name": "Hatch by DigitalOcean",
+        "logo": "../../../../images/digital-ocean.png",
+        "description": "Multinational technology company and cloud service provider",
+        "category": "Cloud Computing",
+        "url": "https://www.digitalocean.com/hatch",
+        "promotion": "Up to $50,000 in credit"
+    },
+    {
+        "name": "AWS Activate",
+        "logo": "../../../../images/aws.jpg",
+        "description": "Provides on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered, pay-as-you-go basis",
+        "category": "Cloud Computing",
+        "url": "https://aws.amazon.com/startups",
+        "promotion": "Up to $100,000 in credits"
+    },
+    {
+        "name": "Startup with IBM",
+        "logo": "../../../../images/ibm.svg",
+        "description": "Provides cloud computing services for business offered by the information technology company IBM.",
+        "category": "Cloud Computing",
+        "url": "https://developer.ibm.com/startups/",
+        "promotion": "$120,000 in credits"
+    },
+    {
+        "name": "Google Cloud for Startups",
+        "logo": "../../../../images/google-cloud.jpg",
+        "description": "Suite of cloud computing services offered by Google that provides a series of modular cloud services",
+        "category": "Cloud Computing",
+        "url": "https://cloud.google.com/startup",
+        "promotion": "Up to $200,000 in credits"
+    },
+    {
+        "name": "Microsoft for Startups",
+        "logo": "../../../../images/azure.png",
+        "description": "Cloud computing platform developed by Microsoft",
+        "category": "Cloud Computing",
+        "url": "https://startups.microsoft.com/",
+        "promotion": "Up to $150,000 in credits"
+    },
+    {
+        "name": "Alibaba Startup Program",
+        "logo": "../../../../images/alibaba-cloud.png",
+        "description": "Alibaba Cloud provides cloud computing services to online businesses and Alibaba's own e-commerce ecosystem",
+        "category": "Cloud Computing",
+        "url": "https://www.alibabacloud.com/startup",
+        "promotion": "$120,000 in credits"
+    },
+    {
+        "name": "Oracle for Startups",
+        "logo": "../../../../images/oracle.jpg",
+        "description": "Oracle Cloud is a cloud computing service offered by Oracle Corporation",
+        "category": "Cloud Computing",
+        "url": "https://www.oracle.com/uk/cloud/oracle-for-startups/",
+        "promotion": "Free cloud and mentorship"
+    },
+    {
+        "name": "Clever UP Program",
+        "logo": "../../../../images/clever-cloud.png",
+        "description": "Provides a Platform as a Service service, based in Europe",
+        "category": "Cloud Computing",
+        "url": "https://www.clever-cloud.com/up-program/",
+        "promotion": "Up to 10,000€ in cloud credits"
+    },
+    {
+        "name": "Heroku is for Startups",
+        "logo": "../../../../images/heroku.jpg",
+        "description": "Cloud platform as a service (PaaS) supporting several programming languages",
+        "category": "Cloud Computing",
+        "url": "https://www.heroku.com/startups",
+        "promotion": "Platform credits and support"
+    },
+    {
+        "name": "Scaleway Startup Program",
+        "logo": "../../../../images/scaleway.jpg",
+        "description": "French Cloud computing and web hosting company",
+        "category": "Cloud Computing",
+        "url": "https://www.scaleway.com/en/startup-program/",
+        "promotion": "Up to €36,000 in credits"
+    },
+    {
+        "name": "MongoDB for Startups",
+        "logo": "../../../../images/mongodb.svg",
+        "description": "Source-available, cross-platform, document-oriented database program.",
+        "category": "Cloud Database",
+        "url": "https://www.mongodb.com/startups",
+        "promotion": "Atlas credits"
+    },
+    {
+        "name": "ScaleGrid Startup Program",
+        "logo": "../../../../images/scalegrid.jpg",
+        "description": "Makes it easy to deploy database hosting for MySQL, PostgreSQL, Redis, MongoDB, and, Greenplum Database on every major cloud",
+        "category": "Cloud Database",
+        "url": "https://help.scalegrid.io/docs/deals-startup-program",
+        "promotion": "50% off on hosting plans"
+    },
+    {
+        "name": "Knowlarity Startup Program",
+        "logo": "../../../../images/knowlarity.jpg",
+        "description": "Leading cloud business communication providers, empowering businesses to communicate and grow seamlessly",
+        "category": "Cloud Communication",
+        "url": "https://www.knowlarity.com/startup-business",
+        "promotion": "20% discount for 12 months"
+    },
+    {
+        "name": "Twilio Startups Program",
+        "logo": "../../../../images/twilio.jpg",
+        "description": "Provides programmable communication tools for making and receiving phone calls, sending and receiving text messages",
+        "category": "Cloud Communication",
+        "url": "https://www.twilio.com/en-us/solutions/startups",
+        "promotion": "Free resources and expertise"
+    },
+    {
+        "name": "MyOperator For Startups",
+        "logo": "../../../../images/myoperator.png",
+        "description": "MyOperator uses Cloud Telephony to provide virtual and toll-free numbers to small and medium enterprises in India",
+        "category": "Cloud Communication",
+        "url": "https://myoperator.com/startup",
+        "promotion": "100K startup credits"
+    },
+    {
+        "name": "Exotel for Startups",
+        "logo": "../../../../images/exotel.cms",
+        "description": "Exotel is a leading provider of AI transformation to enterprises for customer engagement and experience",
+        "category": "Cloud Communication",
+        "url": "https://exotel.com/exotel-for-startups/",
+        "promotion": "INR 6000 in credits"
+    },
+    {
+        "name": "Dialpad for Startups",
+        "logo": "../../../../images/dialpad.jpg",
+        "description": "Dialpad provides cloud-based video conferencing system",
+        "category": "Cloud Communication",
+        "url": "https://www.dialpad.com/dialpad-for-startups",
+        "promotion": "10 free seats"
+    },
+    {
+        "name": "Agora for Startups",
+        "logo": "../../../../images/agora.jpg",
+        "description": "Agora.io enables developers to add HD interactive broadcast, voice, and video calls into mobile and web apps through SDK",
+        "category": "Cloud Communication",
+        "url": "https://www.agora.io/en/startups/",
+        "promotion": "Free minutes (3 months)"
+    },
+    {
+        "name": "Intercom for startups",
+        "logo": "../../../../images/intercom.png",
+        "description": "Intercom, Inc. is a software company that specializes in business messaging, providing businesses with a way to chat with their customers",
+        "category": "Customer Engagement",
+        "url": "https://www.intercom.com/early-stage",
+        "promotion": "90% off ofr the 1st year"
+    },
+    {
+        "name": "Zendesk for Startups",
+        "logo": "../../../../images/zendesk.png",
+        "description": "Provides software-as-a-service products related to customer support, sales, and other customer communications",
+        "category": "Customer Engagement",
+        "url": "https://www.zendesk.co.uk/startups/",
+        "promotion": "6 months free"
+    },
+    {
+        "name": "Help Scout for Startups",
+        "logo": "../../../../images/helpscout.jpg",
+        "description": "Provides an email-based customer support platform, a knowledge base tool, and an embeddable search/contact widget for customer service professionals",
+        "category": "Customer Engagement",
+        "url": "https://www.helpscout.com/startups/",
+        "promotion": "6 months free"
+    },
+    {
+        "name": "Crisp Startup Program",
+        "logo": "../../../../images/crisp.png",
+        "description": "All-in-one business messaging platform that gathers teams, conversations, data and knowledge, around one place",
+        "category": "Customer Engagement",
+        "url": "https://help.crisp.chat/en/article/how-to-apply-to-startup-program-lyfxt4/",
+        "promotion": "N/A"
+    },
+    {
+        "name": "SOLIDWORKS for Startups Program",
+        "logo": "../../../../images/solidworks.jpg",
+        "description": "develops and markets solid modeling computer-aided design, computer-aided engineering, 3D CAD design and collaboration, analysis, and product data management software",
+        "category": "3D Modeling",
+        "url": "https://www.solidworks.com/solution/solidworks-for-startups-program",
+        "promotion": "Free software and training"
+    },
+    {
+        "name": "Autodesk Fusion for Startups",
+        "logo": "../../../../images/autodesk.png",
+        "description": "Provides software products and services for the architecture, engineering, construction, manufacturing, media, education, and entertainment industries",
+        "category": "3D Modeling",
+        "url": "https://www.autodesk.com/campaigns/fusion-360/startups",
+        "promotion": "$150 per user for 3 years"
+    },
+    {
+        "name": "Zenduty Early Stage Program",
+        "logo": "../../../../images/zenduty.png",
+        "description": "Provider of end-to-end incident alerting, on-call management and response orchestration platform",
+        "category": "Incident Management",
+        "url": "https://www.zenduty.com/early-stage-startup-program/",
+        "promotion": "60% off for 1st year"
+    },
+    {
+        "name": "Razorpay Zero Plan",
+        "logo": "../../../../images/razorpay.webp",
+        "description": "Provides payment gateway services to vendors, merchants and ecommerce platforms",
+        "category": "Payments",
+        "url": "https://razorpay.com/rize",
+        "promotion": "Over $300,000 in credits"
+    },
+    {
+        "name": "Chargebee Startup Programme",
+        "logo": "../../../../images/chargebee.svg",
+        "description": "Leading Revenue Growth Management (RGM) platform for subscription businesses",
+        "category": "Payments",
+        "url": "https://www.chargebee.com/partners/startups/",
+        "promotion": "40% off for 1st year"
+    },
+    {
+        "name": "HubSpot for Startups",
+        "logo": "../../../../images/hubspot.jpg",
+        "description": "Developer and marketer of software products for inbound marketing, sales, and customer service.",
+        "category": "Marketing and Sales",
+        "url": "https://www.hubspot.com/startups",
+        "promotion": "75% off for 1st year"
+    },
+    {
+        "name": "Gumlet",
+        "logo": "../../../../images/gumlet.webp",
+        "description": "Delivers image and video processing with low code integration and deliver page speed, user experience and cost benefits to businesses",
+        "category": "Video",
+        "url": "https://www.gumlet.com/startups/",
+        "promotion": "50% off for 1st year"
+    },
+    {
+        "name": "Shotstack Startup Program",
+        "logo": "../../../../images/shotstack.jpg",
+        "description": "Platform for editing videos, using code, that enables developers, marketers, and designers to automate the generation of videos at scale",
+        "category": "Video",
+        "url": "https://shotstack.io/solutions/startups/",
+        "promotion": "80% off"
+    },
+    {
+        "name": "Esri Startup Program",
+        "logo": "../../../../images/esri.jpg",
+        "description": "Esri is an American multinational geographic information system (GIS) software company.It is best known for its ArcGIS products",
+        "category": "Software",
+        "url": "https://www.esri.com/en-us/about/partners/our-partners/startups",
+        "promotion": "Tailored offerings"
+    },
+    {
+        "name": "MATLAB and Simulink for Startups",
+        "logo": "../../../../images/matlab.avif",
+        "description": "Specializes in mathematical computing software",
+        "category": "Software",
+        "url": "https://www.mathworks.com/products/startups.html",
+        "promotion": "Access to software at discounted rates"
+    },
+    {
+        "name": "Remote for Startups",
+        "logo": "../../../../images/remote.webp",
+        "description": "Remote makes running global teams simple. By making it simple to hire, manage, and pay anyone, anywhere",
+        "category": "Software",
+        "url": "https://support.remote.com/hc/en-us/sections/4407290830733-Remote-For-Startups",
+        "promotion": "Discounted rates for startups"
+    },
+    {
+        "name": "Notion for Startups",
+        "logo": "../../../../images/notion.png",
+        "description": "Productivity and note-taking web application. It is an online only organizational tool on many different operating systems",
+        "category": "Productivity",
+        "url": "https://www.notion.so/startups",
+        "promotion": "6 months free"
+    }
+]
